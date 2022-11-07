@@ -3,3 +3,14 @@ server:
   servlet:
     encoding:
       force-response: true
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://<host>:3306/likelion-db
+    username : root
+    password : 12345678
+
+
+  jpa:
+    database : sql-server

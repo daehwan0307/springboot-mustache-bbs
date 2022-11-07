@@ -1,6 +1,7 @@
 package com.mustache.bbs.controller;
 
 import com.mustache.bbs.domain.dto.ArticleDto;
+import com.mustache.bbs.domain.entity.Article;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +19,9 @@ public class ArticleController {
     }
 
     @PostMapping(value = "/posts")
-    public String createArticle(ArticleDto form){
+    public String createArticle(ArticleDto form) {
         log.info(form.toString());
+        Article article = form.toEntity();
         return "";
     }
 }
