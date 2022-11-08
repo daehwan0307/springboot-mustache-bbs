@@ -1,0 +1,12 @@
+{{>layouts/header}}
+<div>
+   이 페이지는 show입니다.
+{{#articleList}}
+<tr>
+<th>{{id}}</th>
+<td><a href="/articles/{{id}}">{{title}}</a></td> <td>{{content}}</td>
+</tr>
+{{/articleList}}
+
+</div>
+{{>layouts/footer}}
