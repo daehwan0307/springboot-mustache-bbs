@@ -13,4 +13,7 @@ spring:
 
 
   jpa:
-    database : sql-server
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database : mysql
+    hibernate.ddl-auto : update
