@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -21,13 +22,19 @@ public class ArticleController {
     public ArticleController(ArticleRepository articleRepository) {
         this.articleRepository = articleRepository;
     }
+    @GetMapping("")
+    public String index() {
+        return "redirect:/articles/list"; //기본 article페이지를 요청할 시 list를 보여주도록 요청
+    }
     @GetMapping(value = "/new")
     public String newArticleForm() {
         return "articles/new";
     }
-    @GetMapping(value = "/list")
-    public String list() {
-        return "list";
+    @GetMapping("/list")
+    public String list(Model model) {
+        List<Article> articleList = articleRepository.findAll();
+        model.addAttribute("articleList", articleList);
+        return "layouts/list";
     }
 
     @PostMapping(value = "/posts")
@@ -44,9 +51,9 @@ public class ArticleController {
         if (!optArticle.isEmpty()) {
             // Optional.get() ---> Article
             model.addAttribute("article", optArticle.get());
-            return "show";
+            return "layouts/show";
         } else {
-            return "error";
+            return "layouts/error";
         }
     }
     @PostMapping("")

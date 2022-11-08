@@ -1,3 +1,23 @@
+{{>layouts/header}}
 <div>
-    이 페이지는 리스트
-<div/>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">제목</th>
+            <th scope="col">내용</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {{#articleList}}
+            <tr>
+                <th scope="row">{{id}}</th>
+                <td>{{title}}</td>
+                <td>{{contents}}</td>
+            </tr>
+        {{/articleList}}
+        </tbody>
+    </table>
+</div>
+{{>layouts/footer}}
