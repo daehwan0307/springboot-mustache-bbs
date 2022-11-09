@@ -37,13 +37,6 @@ public class ArticleController {
         return "layouts/list";
     }
 
-    @PostMapping(value = "/posts")
-    public String createArticle(ArticleDto form) {
-        log.info(form.toString());
-        Article article = form.toEntity();
-        articleRepository.save(article);
-        return "";
-    }
     @GetMapping("/{id}")
     public String selectSingle(@PathVariable Long id, Model model) {
         Optional<Article> optArticle = articleRepository.findById(id);
@@ -56,13 +49,15 @@ public class ArticleController {
             return "layouts/error";
         }
     }
-    @PostMapping("")
-    public String add(ArticleDto articleDto) {
+    @PostMapping(value = "/posts")
+    public String createArticle(ArticleDto articleDto){
+        // 실무에서 println 안씀 로그를 쓴다(서버에서 일어나는 일을 기록하는것)
         log.info(articleDto.getTitle());
         Article savedArticle = articleRepository.save(articleDto.toEntity());
         log.info("generatedId:{}", savedArticle.getId());
         // souf %d %s
         return String.format("redirect:/articles/%d", savedArticle.getId());
+
     }
 
     @GetMapping("/{id}/edit")
