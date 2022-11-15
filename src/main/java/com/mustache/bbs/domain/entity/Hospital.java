@@ -1,5 +1,6 @@
 package com.mustache.bbs.domain.entity;
 
+import com.mustache.bbs.domain.dto.HospitalResponse;
 import com.mustache.bbs.domain.dto.HospitalShowDto;
 import lombok.Data;
 
@@ -44,5 +45,11 @@ public class Hospital {
         }
 
         return new HospitalShowDto(id, hospitalName, businessTypeName, businessStatusCodeString, roadNameAddress, phone, totalAreaSize);
+    }
+    public static HospitalResponse of(Hospital hospital) {
+        return new HospitalResponse(hospital.getId(),
+                hospital.getRoadNameAddress(), hospital.getHospitalName(),
+                hospital.getPatientRoomCount(), hospital.getTotalNumberOfBeds(), hospital.getBusinessTypeName(),
+                hospital.getTotalAreaSize());
     }
 }
