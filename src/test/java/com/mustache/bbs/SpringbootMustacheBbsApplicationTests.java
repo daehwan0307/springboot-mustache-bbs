@@ -66,4 +66,5 @@ class HospitalRepositoryTest {
         System.out.println(hp.getId());
         assertEquals(1,hp.getId());
     }
+
 }

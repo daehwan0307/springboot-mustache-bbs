@@ -1,5 +1,7 @@
 package com.mustache.bbs.service;
 
+import com.mustache.bbs.domain.dto.ArticleAddRequest;
+import com.mustache.bbs.domain.dto.ArticleAddResponse;
 import com.mustache.bbs.domain.dto.ArticleDto;
 import com.mustache.bbs.domain.entity.Article;
 import com.mustache.bbs.domain.entity.Hospital;
@@ -21,4 +23,10 @@ public class ArticleService {
         ArticleDto articleDto =article.of(article);
         return articleDto;
     }
+    public ArticleAddResponse add(ArticleAddRequest dto) {
+        Article article = dto.toEntity();
+        Article savedArticle = articleRepository.save(article);
+        return new ArticleAddResponse(savedArticle.getId(), savedArticle.getTitle(), savedArticle.getContent());
+    }
+
 }
