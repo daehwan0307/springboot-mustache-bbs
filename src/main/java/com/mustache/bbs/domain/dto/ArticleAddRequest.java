@@ -1,15 +1,13 @@
 package com.mustache.bbs.domain.dto;
 
 import com.mustache.bbs.domain.entity.Article;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class ArticleAddRequest {
     private String title;
     private String content;
