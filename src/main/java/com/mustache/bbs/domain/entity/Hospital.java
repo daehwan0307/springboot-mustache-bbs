@@ -2,16 +2,21 @@ package com.mustache.bbs.domain.entity;
 
 import com.mustache.bbs.domain.dto.HospitalResponse;
 import com.mustache.bbs.domain.dto.HospitalShowDto;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
+@Builder
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "nation_wide_hospitals")
-@Data
+
 public class Hospital {
     @Id
     private Integer id;                         // 번호(PK)
